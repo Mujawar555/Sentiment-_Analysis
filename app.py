@@ -7,11 +7,11 @@ import docx
 # Load models once
 @st.cache_resource
 def load_sentiment_model():
-    return pipeline("sentiment-analysis")
+    return pipeline("sentiment-analysis",model="distilbert-base-uncased-finetuned-sst-2-english", device=0)
 
 @st.cache_resource
 def load_summarizer_model():
-    return pipeline("summarization", model="facebook/bart-large-cnn")
+    return pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=0)
 
 analyzer = load_sentiment_model()
 summarizer = load_summarizer_model()
